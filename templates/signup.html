@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sair</title>
+  </head>
+  <body>
+    <h1>Cadastrar</h1>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <form action="/signup" method="post">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name"><br><br>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email"><br><br>
+      <label for="password">Senha:</label>
+      <input type="password" id="password" name="password"><br><br>
+      <input type="submit" value="Cadastrar">
+    </form>
+  </body>
+</html>

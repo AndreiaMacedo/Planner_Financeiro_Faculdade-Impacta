@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Dashboard</h1>
+    {% if user %}
+    <p>Nome: {{ user[1] }}</p>
+    <p>E-mail: {{ user[2] }}</p>
+    <p><a href="/logout">Sair</a></p>
+    {% else %}
+    <p>Você não está cadastrado.</p>
+    {% endif %}
+  </body>
+</html>
