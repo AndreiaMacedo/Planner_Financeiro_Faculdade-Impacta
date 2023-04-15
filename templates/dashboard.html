@@ -7,11 +7,16 @@
   <body>
     <h1>Dashboard</h1>
     {% if user %}
+    <!-- Verifica se o usuário está logado -->
     <p>Nome: {{ user[1] }}</p>
+    <!-- Exibe o nome do usuário logado -->
     <p>E-mail: {{ user[2] }}</p>
+    <!-- Exibe o e-mail do usuário logado -->
     <p><a href="/logout">Sair</a></p>
+    <!-- Cria um link para o usuário sair da sessão -->
     {% else %}
     <p>Você não está cadastrado.</p>
+    <!-- Exibe uma mensagem caso o usuário não esteja logado -->
     {% endif %}
   </body>
 </html>

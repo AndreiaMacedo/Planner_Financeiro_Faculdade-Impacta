@@ -2,19 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Log in</title>
+    <title>Log in</title> <!-- Título da página -->
   </head>
   <body>
-    <h1>Entrar</h1>
-    {% if error %}
-    <p style="color: red;">{{ error }}</p>
+    <h1>Entrar</h1> <!-- Título da seção -->
+    {% if error %} <!-- Verificação se há algum erro a ser exibido -->
+    <p style="color: red;">{{ error }}</p> <!-- Exibição do erro em vermelho -->
     {% endif %}
-    <form action="/login" method="post">
-      <label for="email">E-mail:</label>
-      <input type="email" id="email" name="email"><br><br>
-      <label for="password">Senha:</label>
-      <input type="password" id="password" name="password"><br><br>
-      <input type="submit" value="Log in">
+    <form action="/login" method="post"> <!-- Formulário de login -->
+      <label for="email">E-mail:</label> <!-- Label para o campo de e-mail -->
+      <input type="email" id="email" name="email"><br><br> <!-- Campo de entrada de e-mail -->
+      <label for="password">Senha:</label> <!-- Label para o campo de senha -->
+      <input type="password" id="password" name="password"><br><br> <!-- Campo de entrada de senha -->
+      <input type="submit" value="Log in"> <!-- Botão de submissão do formulário -->
     </form>
   </body>
 </html>
