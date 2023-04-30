@@ -1,0 +1,7 @@
+conn = sqlite3.connect('financeiro.db')
+cursor = conn.cursor()
+cursor.execute('''CREATE TABLE IF NOT EXISTS despesas
+                  (data_pagamento TEXT, nome_despesa TEXT, tipo_despesa TEXT, valor_despesa REAL)''')
+cursor.execute('''CREATE TABLE IF NOT EXISTS receitas
+                  (data_recebimento TEXT, nome_receita TEXT, tipo_receita TEXT, valor_receita REAL)''')
+conn.commit()
