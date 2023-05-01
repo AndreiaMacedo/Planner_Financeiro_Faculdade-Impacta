@@ -58,7 +58,7 @@ def dashboard():
             data_pagamento = request.form['data_pagamento']
             nome_despesa = request.form['nome_despesa']
             tipo_despesa = request.form['tipo_despesa']
-            valor_despesa = request.form['valor_despesa']
+            valor_despesa: float = request.form['valor_despesa']
             conn = sqlite3.connect('financeiro.db')
             cursor = conn.cursor()
             cursor.execute("INSERT INTO despesas (data_pagamento, nome_despesa, tipo_despesa, valor_despesa) VALUES (?, ?, ?, ?)", (data_pagamento, nome_despesa, tipo_despesa, valor_despesa))
@@ -70,7 +70,7 @@ def dashboard():
             data_recebimento = request.form['data_recebimento']
             nome_receita = request.form['nome_receita']
             tipo_receita = request.form['tipo_receita']
-            valor_receita = request.form['valor_receita']
+            valor_receita: float = request.form['valor_receita']
             conn = sqlite3.connect('financeiro.db')
             cursor = conn.cursor()
             cursor.execute("INSERT INTO receitas (data_recebimento, nome_receita, tipo_receita, valor_receita) VALUES (?, ?, ?, ?)", (data_recebimento, nome_receita, tipo_receita, valor_receita))
