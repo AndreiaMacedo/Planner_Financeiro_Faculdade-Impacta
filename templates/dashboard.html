@@ -7,13 +7,84 @@
   <body>
     <h1>Dashboard</h1>
     {% if user %}
-    <!-- Verifica se o usuário está logado -->
-    <p>Nome: {{ user[1] }}</p>
-    <!-- Exibe o nome do usuário logado -->
-    <p>E-mail: {{ user[2] }}</p>
-    <!-- Exibe o e-mail do usuário logado -->
-    <p><a href="/logout">Sair</a></p>
-    <!-- Cria um link para o usuário sair da sessão -->
+    <h1>Bem-vindo(a), {{ user[1] }}!</h1>
+    <h2>Cadastrar nova despesa:</h2>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <label>Data de pagamento:</label>
+        <input type="date" name="data_pagamento" required><br>
+        
+        <label>Nome da despesa:</label>
+        <input type="text" name="nome_despesa" required><br>
+        
+        <label>Tipo de despesa:</label>
+        <input type="text" name="tipo_despesa" required><br>
+        
+        <label>Valor da despesa:</label>
+        <input type="float" name="valor_despesa" required><br>
+        
+        <button type="submit" name="cadastrar_despesa">Cadastrar</button>
+    </form>
+    
+    <h2>Cadastrar nova receita:</h2>
+    <form method="POST" action="{{ url_for('dashboard') }}">
+        <label>Data de recebimento:</label>
+        <input type="date" name="data_recebimento" required><br>
+        
+        <label>Nome da receita:</label>
+        <input type="text" name="nome_receita" required><br>
+        
+        <label>Tipo de receita:</label>
+        <input type="text" name="tipo_receita" required><br>
+        
+        <label>Valor da receita:</label>
+        <input type="float" name="valor_receita" required><br>
+        
+        <button type="submit" name="cadastrar_receita">Cadastrar</button>
+    </form>
+    
+    <h2>Despesas:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data de pagamento</th>
+                <th>Nome da despesa</th>
+                <th>Tipo de despesa</th>
+                <th>Valor da despesa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for despesa in despesas %}
+            <tr>
+                <td>{{ despesa[1] }}</td>
+                <td>{{ despesa[2] }}</td>
+                <td>{{ despesa[3] }}</td>
+                <td>{{ despesa[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Receitas:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Data de recebimento</th>
+                <th>Nome da receita</th>
+                <th>Tipo de receita</th>
+                <th>Valor da receita</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for receita in receitas %}
+            <tr>
+                <td>{{ receita[1] }}</td>
+                <td>{{ receita[2] }}</td>
+                <td>{{ receita[3] }}</td>
+                <td>{{ receita[4] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
     <p>Você não está cadastrado.</p>
     <!-- Exibe uma mensagem caso o usuário não esteja logado -->

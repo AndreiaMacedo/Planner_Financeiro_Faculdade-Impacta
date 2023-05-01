@@ -1,27 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Sair</title>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Cadastro</title>
+  <style>
+    body{
+      font-family: Arial;
+      background-image: linear-gradient(90deg, rgb(23, 3, 27), rgb(56, 59, 229));
+    }
+
+    .box{
+      background-color: rgba(74, 255, 252, 0.8);
+      position: absolute;
+      border-radius: 15px;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      padding: 80px;
+    }
+
+    button{
+      cursor: pointer;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+      padding: 15px;
+      background-color: cornflowerblue;
+      color: aliceblue;
+    }
+
+    button:hover{
+      background-color: rgb(30, 34, 255);
+      transition: 1s;
+    }
+
+    input{
+      padding: 15px;
+      font-size: 20px;
+      outline: none;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
     <h1>Cadastrar</h1>
     {% if error %}
-    <!--Exibe uma mensagem de erro caso haja algum erro-->
-    <p style="color: red;">{{ error }}</p>
+    <p style="color: rgb(8, 0, 0);">{{ error }}</p>
     {% endif %}
     <form action="/signup" method="post">
-      <!--Cria um campo de entrada de texto para o nome-->
-      <label for="name">Nome:</label>
-      <input type="text" id="name" name="name"><br><br>
-      <label for="email">E-mail:</label>
-       <!--Cria um campo de entrada de texto para o email-->
-      <input type="email" id="email" name="email"><br><br>
-      <!--Cria um campo de entrada de texto para a senha-->
-      <label for="password">Senha:</label>
-      <input type="password" id="password" name="password"><br><br>
-      <!--Cria um botão de envio do formulário-->
-      <input type="submit" value="Cadastrar">
+      <input type="email" id="email" placeholder="E-mail" name="email">
+      <br><br>
+      <input type="text" id="name" placeholder="Nome" name="name">
+      <br><br>      
+      <input type="password" id="password" placeholder="Senha" name="password">
+      <br><br>
+      <button>Cadastrar</button>
     </form>
-  </body>
+  </div>
+</body>
 </html>
