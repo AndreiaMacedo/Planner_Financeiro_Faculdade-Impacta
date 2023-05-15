@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gráficos</title>
+  <style>
+    h1, h2, h3 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gráficos</h1>
+  <h2>Bem-vindo, {{ user[1] }}</h2>
+  <div class="container">
+    <div class="graph left">
+      <img src="data:image/png;base64,{{ image_base64 }}" width="700">
+    </div>
+    <div class="graph right">
+      <img src="data:image/png;base64,{{ image_base64_orcamento }}" width="700">
+    </div>
+  </div>
+</body>
+</html>
