@@ -5,19 +5,61 @@
     <title>Dashboard</title>
   </head>
   <body>
+
     <h1>Dashboard</h1>
     {% if user %}
     <h1>Bem-vindo(a), {{ user[1] }}!</h1>
-    <h2>Cadastrar nova despesa:</h2>
-    <form method="POST" action="{{ url_for('dashboard') }}">
+    <h2>Saldo Atual: R$ {{ saldo_atual }}</h2>
+    <p>{{ user[1] }}, para cadastrar as receitas e despesas, antes, é necessário que informe o saldo.</p>
+
+    <button onclick="toggleForm('saldo')">Cadastrar Saldo</button>
+    <form method="POST" action="{{ url_for('dashboard') }}" id="form-saldo" style="display:none">
+        <label>Data:</label>
+        <input type="date" name="data_movimento" required><br>
+        
+        <label>Banco:</label>
+        <input type="text" name="banco" required><br>
+        
+        <label>Saldo:</label>
+        <input type="float" name="saldo" required><br>
+        
+        <button type="submit" name="informar_saldo">Cadastrar</button>
+    </form>
+
+    <button onclick="toggleForm('receita')">Cadastrar nova receita</button>
+    <form method="POST" action="{{ url_for('dashboard') }}" id="form-receita" style="display:none">
+        <label>Banco:</label>
+        <input type="text" name="banco" required><br>
+
+        <label>Data de recebimento:</label>
+        <input type="date" name="data_movimento" required><br>
+        
+        <label>Nome da receita:</label>
+        <input type="text" name="nome_movimento" required><br>
+        
+        <label>Tipo de receita:</label>
+        <input type="text" name="tipo_movimento" required><br>
+        
+        <label>Valor da receita:</label>
+        <input type="float" name="valor_receita" required><br>
+        
+        <button type="submit" name="cadastrar_receita">Cadastrar</button>
+    </form>
+
+    <button onclick="toggleForm('despesa')">Cadastrar nova despesa</button>
+    <form method="POST" action="{{ url_for('dashboard') }}" id="form-despesa" style="display:none">
+
+        <label>Banco:</label>
+        <input type="text" name="banco" required><br>      
+        
         <label>Data de pagamento:</label>
-        <input type="date" name="data_pagamento" required><br>
+        <input type="date" name="data_movimento" required><br>
         
         <label>Nome da despesa:</label>
-        <input type="text" name="nome_despesa" required><br>
+        <input type="text" name="nome_movimento" required><br>
         
         <label>Tipo de despesa:</label>
-        <input type="text" name="tipo_despesa" required><br>
+        <input type="text" name="tipo_movimento" required><br>
         
         <label>Valor da despesa:</label>
         <input type="float" name="valor_despesa" required><br>
@@ -25,66 +67,43 @@
         <button type="submit" name="cadastrar_despesa">Cadastrar</button>
     </form>
     
-    <h2>Cadastrar nova receita:</h2>
-    <form method="POST" action="{{ url_for('dashboard') }}">
-        <label>Data de recebimento:</label>
-        <input type="date" name="data_recebimento" required><br>
+    <button onclick="toggleForm('orçamento')">Cadastrar Orçamento</button>
+    <form method="POST" action="{{ url_for('dashboard') }}" id="form-orçamento" style="display:none">
         
-        <label>Nome da receita:</label>
-        <input type="text" name="nome_receita" required><br>
+        <label>Data Prevista:</label>
+        <input type="date" name="data_prevista" required><br>
         
-        <label>Tipo de receita:</label>
-        <input type="text" name="tipo_receita" required><br>
+        <label>Nomeação Orçamento:</label>
+        <input type="text" name="nome_movimento" required><br>
         
-        <label>Valor da receita:</label>
-        <input type="float" name="valor_receita" required><br>
+        <label>Tipo: (Receita/Despesa)</label>
+        <input type="text" name="tipo_movimento" required><br>
         
-        <button type="submit" name="cadastrar_receita">Cadastrar</button>
+        <label>Valor Orçamento:</label>
+        <input type="float" name="orçamento_previsto" required><br>
+        
+        <button type="submit" name="cadastrar_orçamento">Cadastrar</button>
     </form>
+
+
+    <script>
+      function toggleForm(formName) {
+        var form = document.getElementById("form-" + formName);
+        if (form.style.display === "none") {
+          form.style.display = "block";
+        } else {
+          form.style.display = "none";
+        }
+      }
+    </script>
     
-    <h2>Despesas:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Data de pagamento</th>
-                <th>Nome da despesa</th>
-                <th>Tipo de despesa</th>
-                <th>Valor da despesa</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for despesa in despesas %}
-            <tr>
-                <td>{{ despesa[1] }}</td>
-                <td>{{ despesa[2] }}</td>
-                <td>{{ despesa[3] }}</td>
-                <td>{{ despesa[4] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <h2>Receitas:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Data de recebimento</th>
-                <th>Nome da receita</th>
-                <th>Tipo de receita</th>
-                <th>Valor da receita</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for receita in receitas %}
-            <tr>
-                <td>{{ receita[1] }}</td>
-                <td>{{ receita[2] }}</td>
-                <td>{{ receita[3] }}</td>
-                <td>{{ receita[4] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    <ul>       
+      <a class="link_graficos" href="/graficosxxx">Acessar Gráficos</a>
+      <br><br><br>     
+    </ul>
+
+
     {% else %}
     <p>Você não está cadastrado.</p>
     <!-- Exibe uma mensagem caso o usuário não esteja logado -->
